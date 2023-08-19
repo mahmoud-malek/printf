@@ -22,16 +22,22 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 			len += _putchar(format[i]);
 
-		else if (format[i] == '%')
+		else
 		{
-			i++;
 
-			func = get_f(format[i]);
+			func = get_f(format[i + 1]);
 			if (func != NULL)
+			{
 				len += func(vals);
-
-			else if (format[i] == '%')
+				i++;
+			}
+			else
+			{
 				len += _putchar('%');
+				if (format[i + 1] != '\0' && format[i + 1] != '%')
+					len += _putchar(format[i + 1]);
+				i++;
+			}
 		}
 	}
 
