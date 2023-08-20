@@ -34,7 +34,8 @@ int print_unsigned(va_list value)
 		i++;
 
 	for (; tmp[i] != '\0'; i++)
-		_putchar(tmp[i]);
+		if (tmp[i] >= '0' && tmp[i] <= '9')
+			_putchar(tmp[i]);
 
 	return (cnt);
 }
@@ -93,4 +94,39 @@ int print_percent(va_list value)
 	UNUSED(value);
 
 	return (_putchar('%'));
+}
+
+/**
+ * print_STRING - function that prints a non-printable string
+ * @value: string to print
+ *
+ * Return: number of the number of characters printed
+ */
+
+int print_STRING(va_list value)
+{
+	char *str = va_arg(value, char *);
+	int cnt = 0;
+	char *hex;
+
+	if (!str)
+		str = "(null)";
+
+	while (*str)
+	{
+		if ((*str > 0 && *str < 32) || *str == 127)
+		{
+			hex = convert(*str, 16);
+			cnt += _putchar('\\');
+			cnt += _putchar('x');
+
+			if (!hex[1])
+				cnt += _putchar('0');
+			cnt += _puts(hex);
+		}
+		else
+			cnt += _putchar(*str);
+	}
+
+	return (cnt);
 }

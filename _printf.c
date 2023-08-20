@@ -40,6 +40,7 @@ int _printf(const char *format, ...)
 		}
 	}
 
+	_putchar(FLUSH);
 	va_end(vals);
 	return (len);
 }
@@ -67,6 +68,8 @@ int (*get_f(char format))(va_list)
 		{'x', print_hex},
 		{'X', print_HEX},
 		{'%', print_percent},
+		{'S', print_STRING},
+		{'p', print_pointer},
 		{'\0', NULL}
 
 	};

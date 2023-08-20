@@ -44,7 +44,8 @@ int print_int(va_list value)
 		i++;
 
 	for (; tmp[i] != '\0'; i++)
-		_putchar(tmp[i]);
+		if (tmp[i] >= '0' && tmp[i] <= '9')
+			_putchar(tmp[i]);
 
 	return (cnt);
 }
