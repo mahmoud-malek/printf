@@ -110,7 +110,7 @@ int print_STRING(va_list value)
 	char *hex;
 
 	if (!str)
-		str = "(null)";
+		return (_puts("(null)"));
 
 	while (*str)
 	{
@@ -126,6 +126,7 @@ int print_STRING(va_list value)
 		}
 		else
 			cnt += _putchar(*str);
+		str++;
 	}
 
 	return (cnt);
