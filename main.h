@@ -1,8 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
+
+#define UNUSED(x) (void)(x)
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
+
 
 /*tools for facilitate job*/
 int _putchar(char c);
@@ -20,6 +23,7 @@ int print_octal(va_list value);
 int print_unsigned(va_list value);
 int print_hex(va_list value);
 int print_HEX(va_list value);
+int print_percent(va_list value);
 
 int (*get_f(char format))(va_list);
 

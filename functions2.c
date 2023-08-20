@@ -1,7 +1,5 @@
 #include "main.h"
 
-/*****************************Printing number functions***********************/
-
 /**
  * print_unsigned - function that prints unsigned integer
  * @value: contian number to print
@@ -81,4 +79,18 @@ int print_HEX(va_list value)
 	}
 
 	return (i);
+}
+
+/**
+ * print_percent - function that prints HEX of a number
+ * @value: contian number to print
+ *
+ * Return: number of the number of characters printed
+ */
+
+int print_percent(va_list value)
+{
+	UNUSED(value);
+
+	return (_putchar('%'));
 }

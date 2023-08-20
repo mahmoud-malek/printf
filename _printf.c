@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int (*func)(va_list);
 
 	va_start(vals, format);
-	if (!format)
+	if (format == NULL)
 		return (-1);
 
 	for (i = 0; format[i] != '\0'; i++)
@@ -33,10 +33,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				len += _putchar('%');
-				if (format[i + 1] != '\0' && format[i + 1] != '%')
-					len += _putchar(format[i + 1]);
-				i++;
+				len += _putchar(format[i]);
 			}
 		}
 	}
@@ -67,6 +64,7 @@ int (*get_f(char format))(va_list)
 		{'u', print_unsigned},
 		{'x', print_hex},
 		{'X', print_HEX},
+		{'%', print_percent},
 		{'\0', NULL}
 
 	};
